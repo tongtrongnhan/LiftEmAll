@@ -7,7 +7,7 @@ using LiftEmAll.Models;
 
 namespace LiftEmAll.Controllers
 {
-	[Authorize]
+	[AllowAnonymous]
 	public class HomeController : Controller
 	{
 		Class1 helper=new Class1();
@@ -52,5 +52,30 @@ namespace LiftEmAll.Controllers
 
 			return View("Index", request);
 		}
-	}
+
+        public ActionResult GetRequest()
+        {
+            var data = BindToMarker(helper.GetAllRequest());
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+        private List<Marker> BindToMarker(List<DriverRequest> data )
+        {
+            var result = new List<Marker>();
+            foreach (var item in data)
+            {
+                var stringArray = item.DestinationLocation.Split(':');
+                if (stringArray.Length > 1)
+                {
+                    result.Add(new Marker()
+                    {
+                        lat = decimal.Parse(stringArray[0]),
+                        lng = decimal.Parse(stringArray[1])
+                    });
+                }                
+            }
+            return result;
+        }
+    }
 }

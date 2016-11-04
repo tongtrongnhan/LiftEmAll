@@ -9,103 +9,7 @@
     @Styles.Render("~/Content/styles/home")
 }
 
-	#pac-input {
-		background-color: #fff;
-		font-family: Roboto;
-		font-size: 15px;
-		font-weight: 300;
-		margin-left: 12px;
-		padding: 0 11px 0 13px;
-		text-overflow: ellipsis;
-		width: 30%;
-		max-width: 100%;
-	}
-
-		#pac-input:focus {
-			border-color: #4d90fe;
-		}
-
-	.pac-container {
-		font-family: Roboto;
-	}
-
-	#type-selector {
-		color: #fff;
-		background-color: #4d90fe;
-		padding: 5px 11px 0px 11px;
-	}
-
-		#type-selector label {
-			font-family: Roboto;
-			font-size: 13px;
-			font-weight: 300;
-		}
-
-	#target {
-		width: 345px;
-	}
-
-	#panel {
-		position: fixed;
-		background: #444;
-		color: #fff;
-		height: 100%;
-		width: 300px;
-		right: -300px;
-		transition: right 0.4s ease-in-out;
-		-o-transition: right 0.4s ease-in-out;
-		-ms-transition: right 0.4s ease-in-out;
-		-moz-transition: right 0.4s ease-in-out;
-		-webkit-transition: right 0.4s ease-in-out;
-		z-index: 10000;
-		opacity: 0.7;
-	}
-
-		#panel h2, #panel p {
-			padding: 25px;
-		}
-
-	#panelCaller {
-		position: absolute;
-		top: 40%;
-		right: 300px;
-		padding: 30px 10px;
-		background: #444;
-		/*border-radius: 50px 0 0 50px;*/
-	}
-
-		#panelCaller:hover {
-			cursor: pointer;
-		}
-
-	.panel-default {
-		border-color: transparent;
-	}
-
-	.panel {
-		background-color: inherit;
-	}
-
-	.panel-default > .panel-heading {
-		background-color: inherit;
-		border-color: inherit;
-		color: inherit;
-	}
-
-	.nav-tabs {
-		border-bottom: none;
-	}
-
-		.nav-tabs > li > a {
-			color: white;
-		}
-
-			.nav-tabs > li > a:hover, .nav-tabs > li.active > a {
-				color: black;
-			}
-</style>
-
-<form action="@Url.Action("SendRequest")" method="POST" novalidate="novalidate">
+<form action="@Url.Action("SendRequest")" method="POST" novalidate="novalidate" id="newRequestForm">
 	<div id="panel">
 	    <div id="panelCaller">
 	        <i class="fa fa-angle-double-left" aria-hidden="true"></i>
@@ -117,150 +21,99 @@
             <li role="presentation" class=""><a href="javascript:void(0)" data-target="#allRequest">All pick-up request</a></li>            
         </ul>
 
-	    <div class="tab-content open" id="newRequest">
-            <h3>Request A Driver</h3>
-            <div class="col-md-12">
-                <label class="control-label">Name: </label>
+	    <div class="form-content">
+            <div class="tab-content open" id="newRequest">
+                <h3>Request A Driver</h3>
+                <div class="col-md-12">
+                    <label class="control-label">Name: </label>
+                </div>
+                <div class="col-md-12">
+                    @Html.TextBox("Name", Model.Name, new { @class = "form-control" })
+                </div>
+                <div class="col-md-12">
+                    <label class="control-label">Email: </label>
+                </div>
+                <div class="col-md-12">
+                    @Html.TextBox("Email", Model.Email, new { @class = "form-control" })
+                </div>
+                <div class="col-md-12">
+                    <label class="control-label">Phone: </label>
+                </div>
+                <div class="col-md-12">
+                    @Html.TextBox("Phone", Model.Phone, new { @class = "form-control" })
+                </div>
+                <div class="col-md-12">
+                    <label class="control-label">Pick-up location: </label>
+                </div>
+                <div class="col-md-12">
+                    @Html.TextBox("PickUpLocation", Model.PickUpLocation, new { @class = "form-control" })
+                </div>
+                <div class="col-md-12">
+                    <label class="control-label">Destination location: </label>
+                </div>
+                <div class="col-md-12">
+                    @Html.TextBox("DestinationLocation", Model.DestinationLocation, new { @class = "form-control" })
+                </div>
+                <div class="col-md-12" style="margin-top: 15px">
+                    <button class="btn btn-success" type="submit">Send</button>
+                </div>
             </div>
-            <div class="col-md-12">
-                @Html.TextBox("Name", Model.Name, new { @class = "form-control" })
+            <div class="tab-content" id="allRequest">
+                <h3>All Request</h3>
+                <div class="request-item">
+                    <div class="item-row">
+                        <div class="field-label">
+                            <label>Passenger's name</label>
+                        </div>
+                        <div class="content">
+                            <i class="fa fa-user-o" aria-hidden="true"></i>
+                            <span>Nguyen Van A</span>
+                        </div>
+                    </div>
+                    <div class="item-row">
+                        <div class="field-label">
+                            <label>Mobile phone</label>
+                        </div>
+                        <div class="content">
+                            <a href="tel: 0123456789">
+                                <i class="fa fa-mobile" aria-hidden="true"></i>
+                                0123456789
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item-row">
+                        <div class="field-label">
+                            <label>Pick-up address</label>
+                        </div>
+                        <div class="content">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                                199 Điện Biên Phủ, Ho Chi Minh City, Ho Chi Minh, Vietnam
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item-row">
+                        <div class="field-label">
+                            <label>Pick-up time</label>
+                        </div>
+                        <div class="content">
+                            <i class="fa fa-clock-o" aria-hidden="true"></i>
+                            <span>17:30</span>
+                        </div>
+                    </div>
+                    <div class="item-row">
+                        <button type="button" class="btn btn-primary">Accept</button>
+                        <button type="button" class="btn btn-success">Call</button>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-12">
-                <label class="control-label">Email: </label>
-            </div>
-            <div class="col-md-12">
-                @Html.TextBox("Email", Model.Email, new { @class = "form-control" })
-            </div>
-            <div class="col-md-12">
-                <label class="control-label">Phone: </label>
-            </div>
-            <div class="col-md-12">
-                @Html.TextBox("Phone", Model.Phone, new { @class = "form-control" })
-            </div>
-            <div class="col-md-12">
-                <label class="control-label">Pick-up location: </label>
-            </div>
-            <div class="col-md-12">
-                @Html.TextBox("PickUpLocation", Model.PickUpLocation, new { @class = "form-control" })
-            </div>
-            <div class="col-md-12">
-                <label class="control-label">Destination location: </label>
-            </div>
-            <div class="col-md-12">
-                @Html.TextBox("DestinationLocation", Model.DestinationLocation, new { @class = "form-control" })
-            </div>
-            <div class="col-md-12" style="margin-top: 15px">
-                <button class="btn btn-success" type="submit">Send</button>
-            </div>
-	    </div>
-	    <div class="tab-content" id="allRequest">
-	        <h3>All Request</h3>
-	        <div class="request-item">
-	            
-	        </div>
-	    </div>
+	    </div>	    
 	</div>
 </form>
 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
 <div id="map"></div>
 
 @section scripts {
-	<script>
-		function showRightPanel() {
-			$("#panel").css("right") == "-300px" ?
-					$("#panel").css("right", "0px") :
-					$("#panel").css("right", "-300px")
-			;
-		}
-		$(function () {
-			$('.slider-arrow').click(function () {
-				if ($(this).hasClass('show')) {
-					$(".slider-arrow, .panel").animate({
-						left: "+=290"
-					}, 700, function () {
-						// Animation complete.
-					});
-					$(this).html('&laquo;').removeClass('show').addClass('hide');
-				}
-				else {
-					$(".slider-arrow, .panel").animate({
-						left: "-=290"
-					}, 700, function () {
-						// Animation complete.
-					});
-					$(this).html('&raquo;').removeClass('hide').addClass('show');
-				}
-			});
-
-		});
-
-		function initAutocomplete() {
-			var map = new google.maps.Map(document.getElementById('map'), {
-				center: { lat: -33.8688, lng: 151.2195 },
-				zoom: 13,
-				mapTypeId: 'roadmap'
-			});
-
-			// Create the search box and link it to the UI element.
-			var input = document.getElementById('pac-input');
-			var searchBox = new google.maps.places.SearchBox(input);
-			map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-			// Bias the SearchBox results towards current map's viewport.
-			map.addListener('bounds_changed', function () {
-				searchBox.setBounds(map.getBounds());
-			});
-
-			var markers = [];
-			// Listen for the event fired when the user selects a prediction and retrieve
-			// more details for that place.
-			searchBox.addListener('places_changed', function () {
-				var places = searchBox.getPlaces();
-
-				if (places.length == 0) {
-					return;
-				}
-
-				// Clear out the old markers.
-				markers.forEach(function (marker) {
-					marker.setMap(null);
-				});
-				markers = [];
-
-				// For each place, get the icon, name and location.
-				var bounds = new google.maps.LatLngBounds();
-				places.forEach(function (place) {
-					if (!place.geometry) {
-						console.log("Returned place contains no geometry");
-						return;
-					}
-					var icon = {
-						url: place.icon,
-						size: new google.maps.Size(71, 71),
-						origin: new google.maps.Point(0, 0),
-						anchor: new google.maps.Point(17, 34),
-						scaledSize: new google.maps.Size(25, 25)
-					};
-
-					// Create a marker for each place.
-					markers.push(new google.maps.Marker({
-						map: map,
-						icon: icon,
-						title: place.name,
-						position: place.geometry.location
-					}));
-
-					if (place.geometry.viewport) {
-						// Only geocodes have viewport.
-						bounds.union(place.geometry.viewport);
-					} else {
-						bounds.extend(place.geometry.location);
-					}
-				});
-				map.fitBounds(bounds);
-			});
-		}
-	</script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzKDA8fLjC4_Mc7CxMXejSeURcU3QPb74&libraries=places&callback=initAutocomplete"
-			async defer></script>
+	@Scripts.Render("~/bundles/pages/home")
+	
 }

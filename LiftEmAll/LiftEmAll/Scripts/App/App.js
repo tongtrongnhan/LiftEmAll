@@ -91,9 +91,9 @@ function initAutocomplete() {
 
 function setupMap() {
     var mapOptions = {
-        center: new google.maps.LatLng(33.8688, 151.2195), /// need HCM city
+        center: new google.maps.LatLng(10.799596, 106.7000696), /// need HCM city10.799596,106.7000696
         zoom: 9,
-        mapTypeId: google.maps.MapTypeId.HYBRID,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
         zoomControl: true,
         mapTypeControl: true,
         scaleControl: true,
@@ -204,4 +204,22 @@ function ClearMarkers() {
         markers[i].setMap(null);
     }
     markers = [];
+}
+
+function GetAllRequest() {
+    var url = 
+    $.ajax({
+        url: '',
+        data: {
+            checklistItemId: id,
+            statusId: status,
+            comment: comment,
+            userAction: userAction,
+            url: url
+        },
+        type: 'POST',
+        success: function (result) {
+            $('#SearchForm').submit();
+        }
+    });
 }
