@@ -92,54 +92,83 @@
 		/*border-radius: 50px 0 0 50px;*/
 	}
 
-	#panel:hover {
-		cursor: pointer;
+		#panelCaller:hover {
+			cursor: pointer;
+		}
+
+	.panel-default {
+		border-color: transparent;
 	}
+
+	.panel {
+		background-color: inherit;
+	}
+
+	.panel-default > .panel-heading {
+		background-color: inherit;
+		border-color: inherit;
+		color: inherit;
+	}
+
+	.nav-tabs {
+		border-bottom: none;
+	}
+
+		.nav-tabs > li > a {
+			color: white;
+		}
+
+			.nav-tabs > li > a:hover, .nav-tabs > li.active > a {
+				color: black;
+			}
 </style>
 
 <form action="@Url.Action("SendRequest")" method="POST" novalidate="novalidate">
 	<div id="panel">
 		<div id="panelCaller" onclick="showRightPanel(); return false;">HEY!</div>
 
-		<h2>Request A Driver</h2>
+		<div>
+			<div class="col-md-12">
+				<h3>Request A Driver</h3>
+			</div>
+			<div class="col-md-12">
+				<label class="control-label">Name: </label>
+			</div>
+			<div class="col-md-12">
+				@Html.TextBox("Name", Model.Name, new { @class = "form-control" })
+			</div>
 
-		<div class="col-md-12">
-			<label class="control-label">Name: </label>
-		</div>
-		<div class="col-md-12">
-			@Html.TextBox("Name", Model.Name, new { @class = "form-control" })
-		</div>
+			<div class="col-md-12">
+				<label class="control-label">Email: </label>
+			</div>
+			<div class="col-md-12">
+				@Html.TextBox("Email", Model.Email, new { @class = "form-control" })
+			</div>
 
-		<div class="col-md-12">
-			<label class="control-label">Email: </label>
-		</div>
-		<div class="col-md-12">
-			@Html.TextBox("Email", Model.Email, new { @class = "form-control" })
-		</div>
+			<div class="col-md-12">
+				<label class="control-label">Phone: </label>
+			</div>
+			<div class="col-md-12">
+				@Html.TextBox("Phone", Model.Phone, new { @class = "form-control" })
+			</div>
 
-		<div class="col-md-12">
-			<label class="control-label">Phone: </label>
-		</div>
-		<div class="col-md-12">
-			@Html.TextBox("Phone", Model.Phone, new { @class = "form-control" })
-		</div>
+			<div class="col-md-12">
+				<label class="control-label">Pick-up location: </label>
+			</div>
+			<div class="col-md-12">
+				@Html.TextBox("PickUpLocation", Model.PickUpLocation, new { @class = "form-control" })
+			</div>
 
-		<div class="col-md-12">
-			<label class="control-label">Pick-up location: </label>
-		</div>
-		<div class="col-md-12">
-			@Html.TextBox("PickUpLocation", Model.PickUpLocation, new { @class = "form-control" })
-		</div>
+			<div class="col-md-12">
+				<label class="control-label">Destination location: </label>
+			</div>
+			<div class="col-md-12">
+				@Html.TextBox("DestinationLocation", Model.DestinationLocation, new { @class = "form-control" })
+			</div>
 
-		<div class="col-md-12">
-			<label class="control-label">Destination location: </label>
-		</div>
-		<div class="col-md-12">
-			@Html.TextBox("DestinationLocation", Model.DestinationLocation, new { @class = "form-control" })
-		</div>
-
-		<div class="col-md-12" style="margin-top: 15px">
-			<button class="btn btn-success" type="submit">Send</button>
+			<div class="col-md-12" style="margin-top: 15px">
+				<button class="btn btn-success" type="submit">Send</button>
+			</div>
 		</div>
 	</div>
 </form>
@@ -149,8 +178,8 @@
 	<script>
 		function showRightPanel() {
 			$("#panel").css("right") == "-300px" ?
-			$("#panel").css("right", "0px") :
-			$("#panel").css("right", "-300px")
+					$("#panel").css("right", "0px") :
+					$("#panel").css("right", "-300px")
 			;
 		}
 		$(function () {

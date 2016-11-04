@@ -7,6 +7,7 @@ using LiftEmAll.Models;
 
 namespace LiftEmAll.Controllers
 {
+	[Authorize]
 	public class HomeController : Controller
 	{
 		Class1 helper=new Class1();
@@ -31,7 +32,6 @@ namespace LiftEmAll.Controllers
 			var t=new DriverRequest();
 			return View(t);
 		}
-
 		public ActionResult About()
 		{
 			ViewBag.Message = "Your application description page.";
