@@ -1,14 +1,16 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(LiftEmAll.Startup))]
+[assembly: OwinStartup(typeof(LiftEmAll.Startup))]
 namespace LiftEmAll
 {
     public partial class Startup
     {
+        // Methods
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
+            app.MapSignalR();
         }
     }
+
 }

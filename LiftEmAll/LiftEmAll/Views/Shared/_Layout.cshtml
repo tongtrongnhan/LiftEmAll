@@ -7,6 +7,7 @@
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
 
 </head>
 <body>
@@ -34,8 +35,34 @@
         @RenderBody()
     @*</div>*@
 
-    @Scripts.Render("~/bundles/jquery")
+   
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/bootstrao-growl.js"></script>
+    <script>
+        function showPopup(type, title, mess) {
+            $.growl({
+                title: '<strong>' + title + '</strong></br>',
+                message: mess
+            }, {
+                type: type,
+                placement:
+                {
+                    from: "top",
+                    align: "center"
+                },
+                allow_dismiss: true,
+            });
+
+        }
+
+        function showError(title, mess) {
+            showPopup("danger", title, mess);
+        }
+
+        function showSuccess(title, mess) {
+            showPopup("success", title, mess);
+        }
+    </script>
+
 </body>
 </html>
