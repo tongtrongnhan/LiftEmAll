@@ -8,14 +8,41 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("head", required: false)
+    @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
     @RenderBody()
-
-    @Scripts.Render("~/bundles/jquery")
+    
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzKDA8fLjC4_Mc7CxMXejSeURcU3QPb74&libraries=places&callback=initAutocomplete" async defer></script>
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     @Scripts.Render("~/bundles/app")
+
+    <script src="~/Scripts/bootstrao-growl.js"></script>
+    <script>
+        function showPopup(type, title, mess) {
+            $.growl({
+                title: '<strong>' + title + '</strong></br>',
+                message: mess
+            }, {
+                type: type,
+                placement:
+                {
+                    from: "top",
+                    align: "center"
+                },
+                allow_dismiss: true,
+            });
+
+        }
+
+        function showError(title, mess) {
+            showPopup("danger", title, mess);
+        }
+
+        function showSuccess(title, mess) {
+            showPopup("success", title, mess);
+        }
+    </script>
 </body>
 </html>
