@@ -9,7 +9,7 @@
     @Styles.Render("~/Content/styles/home")
 }
 
-<form action="@Url.Action("SendRequest")" method="POST" novalidate="novalidate">
+<form action="@Url.Action("SendRequest")" method="POST" novalidate="novalidate" id="newRequestForm">
 	<div id="panel">
 	    <div id="panelCaller">
 	        <i class="fa fa-angle-double-left" aria-hidden="true"></i>
@@ -21,48 +21,93 @@
             <li role="presentation" class=""><a href="javascript:void(0)" data-target="#allRequest">All pick-up request</a></li>            
         </ul>
 
-	    <div class="tab-content open" id="newRequest">
-            <h3>Request A Driver</h3>
-            <div class="col-md-12">
-                <label class="control-label">Name: </label>
+	    <div class="form-content">
+            <div class="tab-content open" id="newRequest">
+                <h3>Request A Driver</h3>
+                <div class="col-md-12">
+                    <label class="control-label">Name: </label>
+                </div>
+                <div class="col-md-12">
+                    @Html.TextBox("Name", Model.Name, new { @class = "form-control" })
+                </div>
+                <div class="col-md-12">
+                    <label class="control-label">Email: </label>
+                </div>
+                <div class="col-md-12">
+                    @Html.TextBox("Email", Model.Email, new { @class = "form-control" })
+                </div>
+                <div class="col-md-12">
+                    <label class="control-label">Phone: </label>
+                </div>
+                <div class="col-md-12">
+                    @Html.TextBox("Phone", Model.Phone, new { @class = "form-control" })
+                </div>
+                <div class="col-md-12">
+                    <label class="control-label">Pick-up location: </label>
+                </div>
+                <div class="col-md-12">
+                    @Html.TextBox("PickUpLocation", Model.PickUpLocation, new { @class = "form-control" })
+                </div>
+                <div class="col-md-12">
+                    <label class="control-label">Destination location: </label>
+                </div>
+                <div class="col-md-12">
+                    @Html.TextBox("DestinationLocation", Model.DestinationLocation, new { @class = "form-control" })
+                </div>
+                <div class="col-md-12" style="margin-top: 15px">
+                    <button class="btn btn-success" type="submit">Send</button>
+                </div>
             </div>
-            <div class="col-md-12">
-                @Html.TextBox("Name", Model.Name, new { @class = "form-control" })
+            <div class="tab-content" id="allRequest">
+                <h3>All Request</h3>
+                <div class="request-item">
+                    <div class="item-row">
+                        <div class="field-label">
+                            <label>Passenger's name</label>
+                        </div>
+                        <div class="content">
+                            <i class="fa fa-user-o" aria-hidden="true"></i>
+                            <span>Nguyen Van A</span>
+                        </div>
+                    </div>
+                    <div class="item-row">
+                        <div class="field-label">
+                            <label>Mobile phone</label>
+                        </div>
+                        <div class="content">
+                            <a href="tel: 0123456789">
+                                <i class="fa fa-mobile" aria-hidden="true"></i>
+                                0123456789
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item-row">
+                        <div class="field-label">
+                            <label>Pick-up address</label>
+                        </div>
+                        <div class="content">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                                199 Điện Biên Phủ, Ho Chi Minh City, Ho Chi Minh, Vietnam
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item-row">
+                        <div class="field-label">
+                            <label>Pick-up time</label>
+                        </div>
+                        <div class="content">
+                            <i class="fa fa-clock-o" aria-hidden="true"></i>
+                            <span>17:30</span>
+                        </div>
+                    </div>
+                    <div class="item-row">
+                        <button type="button" class="btn btn-primary">Accept</button>
+                        <button type="button" class="btn btn-success">Call</button>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-12">
-                <label class="control-label">Email: </label>
-            </div>
-            <div class="col-md-12">
-                @Html.TextBox("Email", Model.Email, new { @class = "form-control" })
-            </div>
-            <div class="col-md-12">
-                <label class="control-label">Phone: </label>
-            </div>
-            <div class="col-md-12">
-                @Html.TextBox("Phone", Model.Phone, new { @class = "form-control" })
-            </div>
-            <div class="col-md-12">
-                <label class="control-label">Pick-up location: </label>
-            </div>
-            <div class="col-md-12">
-                @Html.TextBox("PickUpLocation", Model.PickUpLocation, new { @class = "form-control" })
-            </div>
-            <div class="col-md-12">
-                <label class="control-label">Destination location: </label>
-            </div>
-            <div class="col-md-12">
-                @Html.TextBox("DestinationLocation", Model.DestinationLocation, new { @class = "form-control" })
-            </div>
-            <div class="col-md-12" style="margin-top: 15px">
-                <button class="btn btn-success" type="submit">Send</button>
-            </div>
-	    </div>
-	    <div class="tab-content" id="allRequest">
-	        <h3>All Request</h3>
-	        <div class="request-item">
-	            
-	        </div>
-	    </div>
+	    </div>	    
 	</div>
 </form>
 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
