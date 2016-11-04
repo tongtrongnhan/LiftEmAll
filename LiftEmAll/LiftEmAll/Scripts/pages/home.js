@@ -1,10 +1,14 @@
 ﻿(function (home, $, undefined) {
     "use strict";
+
+    home.showRightPanel = function(isShow) {
+        isShow ? $("#panelCaller").addClass("open") : $("#panelCaller").removeClass("open");
+        isShow ? $("#panel").addClass("open") : $("#panel").removeClass("open");
+    };
+
     $("#panelCaller").on("click", function() {
         var opened = $(this).hasClass("open");
-        $(this).toggleClass("open");
-
-        opened ? $("#panel").removeClass("open") : $("#panel").addClass("open");
+        home.showRightPanel(!opened);
     });
     $("#panel .nav li[role='presentation'] a").on("click", function () {
         $("#panel .nav li[role='presentation']").removeClass("active");
