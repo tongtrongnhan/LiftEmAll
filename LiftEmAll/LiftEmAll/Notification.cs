@@ -8,7 +8,6 @@ namespace LiftEmAll
     {
         public static void Send(string data)
         {
-
             IHubContext hubContext = GlobalHost.ConnectionManager.GetHubContext<NotificationHub>();
             hubContext.Clients.All.send(data);
         }
