@@ -7,7 +7,7 @@ using LiftEmAll.Models;
 
 namespace LiftEmAll.Controllers
 {
-	[Authorize]
+	[AllowAnonymous]
 	public class HomeController : Controller
 	{
 		Class1 helper=new Class1();
