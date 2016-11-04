@@ -47,7 +47,7 @@
             </div>
         </div>
         <div class="item-row">
-            <button type="button" class="btn btn-primary">Accept</button>
+            <button type="button" class="btn btn-primary accept-request" onclick="window.home.acceptRequest()" data-url="@Url.Action("Index","Phone", new {requestId = request.Id})">Accept</button>
             <button type="button" class="btn btn-success">Call</button>
         </div>
     </div>

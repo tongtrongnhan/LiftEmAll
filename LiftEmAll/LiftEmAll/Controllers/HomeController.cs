@@ -34,7 +34,7 @@ namespace LiftEmAll.Controllers
 		{
 			helper.SendRequest(request);
 
-			return View("Index", request);
+			return View("Index", new DriverRequest());
 		}
 
         public ActionResult GetRequest()

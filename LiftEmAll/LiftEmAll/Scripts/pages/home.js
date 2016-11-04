@@ -5,6 +5,13 @@
         isShow ? $("#panelCaller").addClass("open") : $("#panelCaller").removeClass("open");
         isShow ? $("#panel").addClass("open") : $("#panel").removeClass("open");
     };
+    home.acceptRequest = function() {
+        var getUrl = $(this).data("url");
+        $.get(getUrl, {}, function() {
+
+        });
+    };
+
     function getView(url, target) {
         $.get(url, {}, function(data) {
             $(target).html(data);
@@ -29,6 +36,16 @@
         $("#panel .tab-content").removeClass("open");
         $($(this).data("target")).addClass("open");
     });
+    $("#allRequest").on("click", ".request-item button.accept-request", function () {
+        var requestUrl = $(this).data("url");
+
+        if (typeof requestUrl == "undefined" || requestUrl.length == 0) {
+            return;
+        }
+
+        $.get(requestUrl, {}, function() {});
+    });
+
     $(function () {
         $('.slider-arrow').click(function () {
             if ($(this).hasClass('show')) {

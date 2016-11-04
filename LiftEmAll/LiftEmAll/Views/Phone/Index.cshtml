@@ -10,7 +10,6 @@
 <script src='https://cdn.rawgit.com/admsev/jquery-play-sound/master/jquery.playSound.js'></script>
 <script>
     $(document).ready(function () {
-
         $(function () {
             var liveStream = $.connection.notificationHub;;
             liveStream.client.send = function (data) {
@@ -20,8 +19,5 @@
             };
             $.connection.hub.start();
         });
-
     });
 </script>
-
-
