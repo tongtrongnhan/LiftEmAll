@@ -1,7 +1,7 @@
 ﻿@model LiftEmAll.Models.DriverRequest
 
 @{
-	ViewBag.Title = "Home Page";
+	ViewBag.Title = "Lift Em All";
 }
 
 @section head
@@ -18,7 +18,7 @@
 
         <ul class="nav nav-tabs nav-justified">
             <li role="presentation" class="active"><a href="javascript:void(0)" data-target="#newRequest">New pick-up request</a></li>
-            <li role="presentation" class=""><a href="javascript:void(0)" data-target="#allRequest">All pick-up request</a></li>            
+            <li role="presentation" class=""><a href="javascript:void(0)" data-target="#allRequest" data-url="@Url.Action("GetAllRequest", "Home")">All pick-up request</a></li>            
         </ul>
 
 	    <div class="form-content">
@@ -59,53 +59,6 @@
                 </div>
             </div>
             <div class="tab-content" id="allRequest">
-                <h3>All Request</h3>
-                <div class="request-item">
-                    <div class="item-row">
-                        <div class="field-label">
-                            <label>Passenger's name</label>
-                        </div>
-                        <div class="content">
-                            <i class="fa fa-user-o" aria-hidden="true"></i>
-                            <span>Nguyen Van A</span>
-                        </div>
-                    </div>
-                    <div class="item-row">
-                        <div class="field-label">
-                            <label>Mobile phone</label>
-                        </div>
-                        <div class="content">
-                            <a href="tel: 0123456789">
-                                <i class="fa fa-mobile" aria-hidden="true"></i>
-                                0123456789
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item-row">
-                        <div class="field-label">
-                            <label>Pick-up address</label>
-                        </div>
-                        <div class="content">
-                            <a href="javascript:void(0)">
-                                <i class="fa fa-location-arrow" aria-hidden="true"></i>
-                                199 Điện Biên Phủ, Ho Chi Minh City, Ho Chi Minh, Vietnam
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item-row">
-                        <div class="field-label">
-                            <label>Pick-up time</label>
-                        </div>
-                        <div class="content">
-                            <i class="fa fa-clock-o" aria-hidden="true"></i>
-                            <span>17:30</span>
-                        </div>
-                    </div>
-                    <div class="item-row">
-                        <button type="button" class="btn btn-primary">Accept</button>
-                        <button type="button" class="btn btn-success">Call</button>
-                    </div>
-                </div>
             </div>
 	    </div>	    
 	</div>

@@ -12,23 +12,7 @@ namespace LiftEmAll.Controllers
 	{
 		Class1 helper=new Class1();
 		public ActionResult Index()
-		{
-			//var request = new DriverRequest
-			//{
-			//	Id = 2,
-			//	Name = "Huynh Tan An",
-			//	Email = "ahuynh@amaris.com",
-			//	Phone = "12345679",
-			//	DriverName = "ddd",
-			//	PickUpLocation = "123.12;14.582",
-			//	DestinationLocation = "156.52;441.558",
-			//	//CreatedDate = DateTime.Now
-			//};
-			//var c = new Class1();
-			////var id = c.SendRequest(request);
-			////var id = c.UpdateDriver(request);
-			//var id = c.UpdateStatus(2);
-
+		{			
 			var t=new DriverRequest();
 			return View(t);
 		}
@@ -77,5 +61,11 @@ namespace LiftEmAll.Controllers
             }
             return result;
         }
+
+	    public ActionResult GetAllRequest()
+	    {
+	        var requestList = helper.GetAllRequest();
+	        return requestList?.Count > 0 ? PartialView("_AllRequest", requestList) : null;
+	    }
     }
 }

@@ -5,12 +5,24 @@
         isShow ? $("#panelCaller").addClass("open") : $("#panelCaller").removeClass("open");
         isShow ? $("#panel").addClass("open") : $("#panel").removeClass("open");
     };
+    function getView(url, target) {
+        $.get(url, {}, function(data) {
+            $(target).html(data);
+        });
+    }
 
     $("#panelCaller").on("click", function() {
         var opened = $(this).hasClass("open");
         home.showRightPanel(!opened);
     });
     $("#panel .nav li[role='presentation'] a").on("click", function () {
+        var requestUrl = $(this).data("url");
+        var targetId = $(this).data("target");
+
+        if (typeof requestUrl != "undefined" && requestUrl.length > 0) {
+            getView(requestUrl, targetId);
+        }
+
         $("#panel .nav li[role='presentation']").removeClass("active");
         $(this).closest("li[role='presentation']").addClass("active");
 
