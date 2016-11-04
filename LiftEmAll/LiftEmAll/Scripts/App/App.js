@@ -205,3 +205,21 @@ function ClearMarkers() {
     }
     markers = [];
 }
+
+function GetAllRequest() {
+    var url = 
+    $.ajax({
+        url: '',
+        data: {
+            checklistItemId: id,
+            statusId: status,
+            comment: comment,
+            userAction: userAction,
+            url: url
+        },
+        type: 'POST',
+        success: function (result) {
+            $('#SearchForm').submit();
+        }
+    });
+}
