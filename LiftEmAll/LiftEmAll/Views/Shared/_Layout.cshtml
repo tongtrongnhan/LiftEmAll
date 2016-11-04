@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>@ViewBag.Title - My ASP.NET Application</title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzKDA8fLjC4_Mc7CxMXejSeURcU3QPb74&libraries=places&callback=initAutocomplete" async defer></script>
+    
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("head", required: false)
@@ -13,6 +13,7 @@
     @RenderBody()
 
     @Scripts.Render("~/bundles/jquery")
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzKDA8fLjC4_Mc7CxMXejSeURcU3QPb74&libraries=places&callback=initAutocomplete" async defer></script>
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     @Scripts.Render("~/bundles/app")

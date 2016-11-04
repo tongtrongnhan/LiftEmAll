@@ -11,27 +11,6 @@ function showRightPanel(show) {
     $("#panel").css("right", "0px") :
     $("#panel").css("right", "-300px");
 }
-$(function () {
-    $('.slider-arrow').click(function () {
-        if ($(this).hasClass('show')) {
-            $(".slider-arrow, .panel").animate({
-                left: "+=290"
-            }, 700, function () {
-                // Animation complete.
-            });
-            $(this).html('&laquo;').removeClass('show').addClass('hide');
-        }
-        else {
-            $(".slider-arrow, .panel").animate({
-                left: "-=290"
-            }, 700, function () {
-                // Animation complete.
-            });
-            $(this).html('&raquo;').removeClass('hide').addClass('show');
-        }
-    });
-    
-});
 
 function initAutocomplete() {
     var mapOptions = {
