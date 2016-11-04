@@ -1,0 +1,135 @@
+﻿#map {
+    height: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.controls {
+    margin-top: 10px;
+    border: 1px solid transparent;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 32px;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#pac-input {
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 30%;
+    max-width: 100%;
+}
+
+#pac-input:focus {
+    border-color: #4d90fe;
+}
+
+.pac-container {
+    font-family: Roboto;
+}
+
+#type-selector {
+    color: #fff;
+    background-color: #4d90fe;
+    padding: 5px 11px 0px 11px;
+}
+
+#type-selector label {
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+#target {
+    width: 345px;
+}
+
+#panel {
+    position: fixed;
+    background: #444;
+    color: #fff;
+    height: 100%;
+    width: 350px;
+    right: -350px;
+    transition: right 0.4s ease-in-out;
+    -o-transition: right 0.4s ease-in-out;
+    -ms-transition: right 0.4s ease-in-out;
+    -moz-transition: right 0.4s ease-in-out;
+    -webkit-transition: right 0.4s ease-in-out;
+    z-index: 10000;
+    opacity: 0.7;
+}
+
+#panel.open {
+    right: 0;
+}
+
+#panel h2, #panel p {
+    padding: 25px;
+}
+
+#panel .tab-content {
+    display: none;
+}
+
+#panel .tab-content h3 {
+    padding: 15px;
+}
+
+#panel .tab-content.open {
+    display: block;
+}
+
+#panel .nav li[role='presentation'] a {
+    color: #fff;
+    border-radius: 0;
+}
+
+#panel .nav li[role='presentation'] a:hover {
+    background-color: #888;
+}
+
+#panel .nav li[role='presentation'].active a {
+    color: #444;
+    font-weight: bold;
+}
+
+#panelCaller {
+    position: absolute;
+    top: 2%;
+    right: 350px;
+    padding: 30px 10px;
+    background: #444;
+    /*border-radius: 50px 0 0 50px;*/
+}
+
+#panelCaller i.fa-angle-double-left {
+    display: block;
+}
+
+#panelCaller.open i.fa-angle-double-left {
+    display: none;
+}
+
+#panelCaller i.fa-angle-double-right {
+    display: none;
+}
+
+#panelCaller.open i.fa-angle-double-right {
+    display: block;
+}
+
+#panel:hover {
+    cursor: pointer;
+}

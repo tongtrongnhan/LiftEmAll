@@ -3,29 +3,11 @@
 @{
 	ViewBag.Title = "Home Page";
 }
-<style>
-	/* Always set the map height explicitly to define the size of the div
-	   * element that contains the map. */
-	#map {
-		height: 100%;
-	}
-	/* Optional: Makes the sample page fill the window. */
-	html, body {
-		height: 100%;
-		margin: 0;
-		padding: 0;
-	}
 
-	.controls {
-		margin-top: 10px;
-		border: 1px solid transparent;
-		border-radius: 2px 0 0 2px;
-		box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		height: 32px;
-		outline: none;
-		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-	}
+@section head
+{
+    @Styles.Render("~/Content/styles/home")
+}
 
 	#pac-input {
 		background-color: #fff;
@@ -125,55 +107,63 @@
 
 <form action="@Url.Action("SendRequest")" method="POST" novalidate="novalidate">
 	<div id="panel">
-		<div id="panelCaller" onclick="showRightPanel(); return false;">HEY!</div>
+	    <div id="panelCaller">
+	        <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+	    </div>
 
-		<div>
-			<div class="col-md-12">
-				<h3>Request A Driver</h3>
-			</div>
-			<div class="col-md-12">
-				<label class="control-label">Name: </label>
-			</div>
-			<div class="col-md-12">
-				@Html.TextBox("Name", Model.Name, new { @class = "form-control" })
-			</div>
+        <ul class="nav nav-tabs nav-justified">
+            <li role="presentation" class="active"><a href="javascript:void(0)" data-target="#newRequest">New pick-up request</a></li>
+            <li role="presentation" class=""><a href="javascript:void(0)" data-target="#allRequest">All pick-up request</a></li>            
+        </ul>
 
-			<div class="col-md-12">
-				<label class="control-label">Email: </label>
-			</div>
-			<div class="col-md-12">
-				@Html.TextBox("Email", Model.Email, new { @class = "form-control" })
-			</div>
-
-			<div class="col-md-12">
-				<label class="control-label">Phone: </label>
-			</div>
-			<div class="col-md-12">
-				@Html.TextBox("Phone", Model.Phone, new { @class = "form-control" })
-			</div>
-
-			<div class="col-md-12">
-				<label class="control-label">Pick-up location: </label>
-			</div>
-			<div class="col-md-12">
-				@Html.TextBox("PickUpLocation", Model.PickUpLocation, new { @class = "form-control" })
-			</div>
-
-			<div class="col-md-12">
-				<label class="control-label">Destination location: </label>
-			</div>
-			<div class="col-md-12">
-				@Html.TextBox("DestinationLocation", Model.DestinationLocation, new { @class = "form-control" })
-			</div>
-
-			<div class="col-md-12" style="margin-top: 15px">
-				<button class="btn btn-success" type="submit">Send</button>
-			</div>
-		</div>
+	    <div class="tab-content open" id="newRequest">
+            <h3>Request A Driver</h3>
+            <div class="col-md-12">
+                <label class="control-label">Name: </label>
+            </div>
+            <div class="col-md-12">
+                @Html.TextBox("Name", Model.Name, new { @class = "form-control" })
+            </div>
+            <div class="col-md-12">
+                <label class="control-label">Email: </label>
+            </div>
+            <div class="col-md-12">
+                @Html.TextBox("Email", Model.Email, new { @class = "form-control" })
+            </div>
+            <div class="col-md-12">
+                <label class="control-label">Phone: </label>
+            </div>
+            <div class="col-md-12">
+                @Html.TextBox("Phone", Model.Phone, new { @class = "form-control" })
+            </div>
+            <div class="col-md-12">
+                <label class="control-label">Pick-up location: </label>
+            </div>
+            <div class="col-md-12">
+                @Html.TextBox("PickUpLocation", Model.PickUpLocation, new { @class = "form-control" })
+            </div>
+            <div class="col-md-12">
+                <label class="control-label">Destination location: </label>
+            </div>
+            <div class="col-md-12">
+                @Html.TextBox("DestinationLocation", Model.DestinationLocation, new { @class = "form-control" })
+            </div>
+            <div class="col-md-12" style="margin-top: 15px">
+                <button class="btn btn-success" type="submit">Send</button>
+            </div>
+	    </div>
+	    <div class="tab-content" id="allRequest">
+	        <h3>All Request</h3>
+	        <div class="request-item">
+	            
+	        </div>
+	    </div>
 	</div>
 </form>
 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
 <div id="map"></div>
+
 @section scripts {
 	<script>
 		function showRightPanel() {
