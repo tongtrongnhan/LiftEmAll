@@ -7,14 +7,21 @@
 
 <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
 <script src="~/signalr/hubs"></script>
+<script src='https://cdn.rawgit.com/admsev/jquery-play-sound/master/jquery.playSound.js'></script>
 <script>
     $(document).ready(function () {
+
         $(function () {
             var liveStream = $.connection.notificationHub;;
             liveStream.client.send = function (data) {
                 showPopup("success", data, data);
+                // sound play
+                $.playSound("http://www.noiseaddicts.com/samples_1w72b820/3721")
             };
             $.connection.hub.start();
         });
+
     });
 </script>
+
+
