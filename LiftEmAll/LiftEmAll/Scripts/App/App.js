@@ -1,18 +1,6 @@
 ﻿var map;
 var markers = [];
 
-
-function showRightPanel(show) {
-    if (show) {
-        $("#panel").css("right", "0px");
-        return;
-    }
-
-    $("#panel").css("right") == "-300px" ?
-    $("#panel").css("right", "0px") :
-    $("#panel").css("right", "-300px");
-}
-
 function initAutocomplete() { 
     setupMap();
 
@@ -151,7 +139,7 @@ function bindEventToPickupButton() {
         var marker = GetMarker($(this).data('markerid'));
         if (marker) {
             $("#PickUpLocation").val(marker.address);
-            showRightPanel(true);
+            window.home.showRightPanel(true);
         }       
     });    
 }
@@ -161,7 +149,7 @@ function bindEventToDestinationButton() {
         var marker = GetMarker($(this).data('markerid'));
         if (marker) {
             $("#DestinationLocation").val(marker.address);
-            showRightPanel(true);
+            window.home.showRightPanel(true);
         }
         
     });
