@@ -243,3 +243,4 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/LiftEmAll/LiftEmAll/App_Data/aspnet.bak
