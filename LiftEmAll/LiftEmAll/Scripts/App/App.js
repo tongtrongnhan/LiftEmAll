@@ -1,4 +1,5 @@
-﻿var markers = [];
+﻿var map;
+var markers = [];
 
 
 function showRightPanel(show) {
@@ -12,21 +13,8 @@ function showRightPanel(show) {
     $("#panel").css("right", "-300px");
 }
 
-function initAutocomplete() {
-    var mapOptions = {
-        center: new google.maps.LatLng(33.8688, 151.2195), /// need HCM city
-        zoom: 9,
-        mapTypeId: google.maps.MapTypeId.HYBRID,
-        zoomControl: true,
-        mapTypeControl: true,
-        scaleControl: true,
-        streetViewControl: true,
-        overviewMapControl: true,
-        rotateControl: true,
-    };
-    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-    
-    
+function initAutocomplete() { 
+    setupMap();
 
     // Create the search box and link it to the UI element.
     var input = document.getElementById('pac-input');
@@ -47,12 +35,6 @@ function initAutocomplete() {
         if (places.length == 0) {
             return;
         }
-
-        // Clear out the old markers.
-        markers.forEach(function (marker) {
-            marker.setMap(null);
-        });
-        markers = [];
 
         // For each place, get the icon, name and location.
         var bounds = new google.maps.LatLngBounds();
@@ -119,6 +101,22 @@ function initAutocomplete() {
     });
 }
 
+function setupMap() {
+    var mapOptions = {
+        center: new google.maps.LatLng(33.8688, 151.2195), /// need HCM city
+        zoom: 9,
+        mapTypeId: google.maps.MapTypeId.HYBRID,
+        zoomControl: true,
+        mapTypeControl: true,
+        scaleControl: true,
+        streetViewControl: true,
+        overviewMapControl: true,
+        rotateControl: true,
+    };
+    map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+}
+
 function getCurrentLocation(map, marker) {
     var latlng = new google.maps.LatLng(marker.position.lat, marker.position.lng); //{ lat: marker.position.lat, lng : marker.position.lng }
     
@@ -167,4 +165,55 @@ function bindEventToDestinationButton() {
         }
         
     });
+}
+
+function displayMarkers() {
+    ClearMarkers();
+    
+    // this variable sets the map bounds and zoom level according to markers position
+    var bounds = new google.maps.LatLngBounds();
+
+    // For loop that runs through the info on markersData making it possible to createMarker function to create the markers
+    for (var i = 0; i < markers.length; i++) {
+
+        var latlng = new google.maps.LatLng(markers[i].position.lat(), markers[i].position.lng());
+        var title = markers[i].title;
+        var address = markers[i].address;
+
+        createMarker(latlng, title, address, i + 1);
+
+        // Marker’s Lat. and Lng. values are added to bounds variable
+        bounds.extend(latlng);
+    }
+
+    // Finally the bounds variable is used to set the map bounds
+    // with API’s fitBounds() function
+    map.fitBounds(bounds);
+}
+
+function createMarker(latlng, title, address, markerId) {
+   
+    var infoWindow = new google.maps.InfoWindow();
+    var marker = new google.maps.Marker({
+        map: map,
+        position: latlng,
+        title: title,
+        address: address,
+        markerId: markerId
+    });
+    markers.push(marker);
+    // This event expects a click on a marker
+    // When this event is fired the infowindow content is created
+    // and the infowindow is opened
+    google.maps.event.addListener(marker, 'click', function () {
+        // Variable to define the HTML content to be inserted in the infowindow
+        openInfoWindowTemplate(marker, title, address);
+    });
+}
+
+function ClearMarkers() {
+    for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(null);
+    }
+    markers = [];
 }
