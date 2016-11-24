@@ -8,7 +8,7 @@
     home.acceptRequest = function() {
         var getUrl = $(this).data("url");
         $.get(getUrl, {}, function() {
-
+            location.reload(true);
         });
     };
 
