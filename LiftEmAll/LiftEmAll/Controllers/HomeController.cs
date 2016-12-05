@@ -7,35 +7,35 @@ using LiftEmAll.Models;
 
 namespace LiftEmAll.Controllers
 {
-	[AllowAnonymous]
-	public class HomeController : Controller
-	{
-		Class1 helper=new Class1();
-		public ActionResult Index()
-		{			
-			var t=new DriverRequest();
-			return View(t);
-		}
-		public ActionResult About()
-		{
-			ViewBag.Message = "Your application description page.";
+    [AllowAnonymous]
+    public class HomeController : Controller
+    {
+        Class1 helper = new Class1();
+        public ActionResult Index()
+        {
+            var t = new DriverRequest();
+            return View(t);
+        }
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
 
-			return View();
-		}
+            return View();
+        }
 
-		public ActionResult Contact()
-		{
-			ViewBag.Message = "Your contact page.";
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
 
-			return View();
-		}
+            return View();
+        }
 
-		public ActionResult SendRequest(DriverRequest request)
-		{
-			helper.SendRequest(request);
+        public ActionResult SendRequest(DriverRequest request)
+        {
+            helper.SendRequest(request);
 
-			return View("Index", new DriverRequest());
-		}
+            return View("Index", new DriverRequest());
+        }
 
         public ActionResult GetRequest()
         {
@@ -44,7 +44,7 @@ namespace LiftEmAll.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
-        private List<Marker> BindToMarker(List<DriverRequest> data )
+        private List<Marker> BindToMarker(List<DriverRequest> data)
         {
             var result = new List<Marker>();
             foreach (var item in data)
@@ -57,15 +57,15 @@ namespace LiftEmAll.Controllers
                         lat = decimal.Parse(stringArray[0]),
                         lng = decimal.Parse(stringArray[1])
                     });
-                }                
+                }
             }
             return result;
         }
 
-	    public ActionResult GetAllRequest()
-	    {
-	        var requestList = helper.GetAllRequest();
-	        return requestList?.Count > 0 ? PartialView("_AllRequest", requestList) : null;
-	    }
+        public ActionResult GetAllRequest()
+        {
+            var requestList = helper.GetAllRequest();
+            return requestList == null || requestList.Count == 0 ? null : PartialView("_AllRequest", requestList);
+        }
     }
 }

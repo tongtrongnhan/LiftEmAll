@@ -1,50 +1,20 @@
 ﻿<!DOCTYPE html>
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>@ViewBag.Title - My ASP.NET Application</title>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="format-detection" content="telephone=no">
+    <title>Lift 'Em All</title>
+
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
     @RenderSection("head", required: false)
-    @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
     @RenderBody()
-    
+
+    @Scripts.Render("~/bundles/base")
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzKDA8fLjC4_Mc7CxMXejSeURcU3QPb74&libraries=places&callback=initAutocomplete" async defer></script>
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    
-
-    <script src="~/Scripts/bootstrao-growl.js"></script>
-    <script>
-        function showPopup(type, title, mess) {
-            $.growl({
-                title: '<strong>' + title + '</strong></br>',
-                message: mess
-            }, {
-                type: type,
-                placement:
-                {
-                    from: "top",
-                    align: "center"
-                },
-                allow_dismiss: true,
-            });
-
-        }
-
-        function showError(title, mess) {
-            showPopup("danger", title, mess);
-        }
-
-        function showSuccess(title, mess) {
-            showPopup("success", title, mess);
-        }
-    </script>
-   
-    @Scripts.Render("~/bundles/app")
 </body>
 </html>

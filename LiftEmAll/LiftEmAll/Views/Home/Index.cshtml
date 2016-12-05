@@ -1,88 +1,98 @@
 ﻿@model LiftEmAll.Models.DriverRequest
 
-@{
-	ViewBag.Title = "Lift Em All";
-}
-
 @section head
 {
     @Styles.Render("~/Content/styles/home")
 }
 
+<header id="header" class="media">
+    <div class="pull-left h-logo" style="height: 50px;">
+        <a href="@Url.Action("Index", "Home")" class="hidden-xs" style="margin-top: 15px;">
+            Lift 'Em All
+        </a>
+    </div>
+    <div class="media-body h-search toggled">
+        <form class="p-relative">
+            <input type="text" class="hs-input" placeholder="Search Google Maps">
+            <i class="zmdi zmdi-search hs-reset" data-ma-action="search-clear"></i>
+        </form>
+    </div>
+    <ul class="h-menu hidden">
+        <li class="dropdown">
+            <div class="p-relative">
+                <input type="text" class="hs-input pac-input" placeholder="Search Google Maps" />
+                <i class="zmdi zmdi-search hs-reset" data-ma-action="search-clear"></i>
+            </div>
+        </li>
+    </ul>
+</header>
+
+
 <form action="@Url.Action("SendRequest")" method="POST" novalidate="novalidate" id="newRequestForm">
-	<div id="panel">
-	    <div id="panelCaller">
-	        <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+    <div id="panel">
+        <div id="panelCaller">
+            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-	    </div>
+        </div>
 
         <ul class="nav nav-tabs nav-justified">
             <li role="presentation" class="active"><a href="javascript:void(0)" data-target="#newRequest">New pick-up request</a></li>
-            <li role="presentation" class=""><a href="javascript:void(0)" data-target="#allRequest" data-url="@Url.Action("GetAllRequest", "Home")">All pick-up request</a></li>            
+            <li role="presentation" class=""><a href="javascript:void(0)" data-target="#allRequest" data-url="@Url.Action("GetAllRequest", "Home")">All pick-up request</a></li>
         </ul>
 
-	    <div class="form-content">
+        <div class="form-content">
             <div class="tab-content open" id="newRequest">
                 <h3>Request A Driver</h3>
                 <div class="col-md-12">
-                    <label class="control-label">Name: </label>
+                    <div class="form-group">
+                        @Html.TextBox("Name", Model.Name, new { @class = "form-control", placeholder = "Name" })
+                    </div>
                 </div>
                 <div class="col-md-12">
-                    @Html.TextBox("Name", Model.Name, new { @class = "form-control" })
+                    <div class="form-group">
+                        @Html.TextBox("Email", Model.Email, new { @class = "form-control", placeholder = "Email" })
+                    </div>
                 </div>
                 <div class="col-md-12">
-                    <label class="control-label">Email: </label>
+                    <div class="form-group">
+                        @Html.TextBox("Phone", Model.Phone, new { @class = "form-control", placeholder = "Phone" })
+                    </div>
                 </div>
                 <div class="col-md-12">
-                    @Html.TextBox("Email", Model.Email, new { @class = "form-control" })
+                    <div class="form-group">
+                        @Html.TextBox("PickUpLocation", Model.PickUpLocation, new { @class = "form-control", placeholder = "Pick-up location" })
+                    </div>
                 </div>
                 <div class="col-md-12">
-                    <label class="control-label">Phone: </label>
-                </div>
-                <div class="col-md-12">
-                    @Html.TextBox("Phone", Model.Phone, new { @class = "form-control" })
-                </div>
-                <div class="col-md-12">
-                    <label class="control-label">Pick-up location: </label>
-                </div>
-                <div class="col-md-12">
-                    @Html.TextBox("PickUpLocation", Model.PickUpLocation, new { @class = "form-control" })
-                </div>
-                <div class="col-md-12">
-                    <label class="control-label">Destination location: </label>
-                </div>
-                <div class="col-md-12">
-                    @Html.TextBox("DestinationLocation", Model.DestinationLocation, new { @class = "form-control" })
+                    <div class="form-group">
+                        @Html.TextBox("DestinationLocation", Model.DestinationLocation, new { @class = "form-control", placeholder = "Destination location" })
+                    </div>
                 </div>
                 <div class="col-md-12" style="margin-top: 15px">
-                    <button class="btn btn-success" type="submit">Send</button>
+                    <button class="btn btn-lg btn-success" type="submit">Send</button>
                 </div>
             </div>
             <div class="tab-content" id="allRequest">
             </div>
-	    </div>	    
-	</div>
+        </div>
+    </div>
 </form>
-<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+
 <div id="map"></div>
 
 @section scripts {
-	@Scripts.Render("~/bundles/pages/home")
-}
-
-<script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
-<script src="~/signalr/hubs"></script>
-<script src='https://cdn.rawgit.com/admsev/jquery-play-sound/master/jquery.playSound.js'></script>
-<script>
-    $(document).ready(function () {
+    <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script>
         $(function () {
             var liveStream = $.connection.notificationHub;;
             liveStream.client.send = function (data) {
                 showPopup("success", data, data);
                 // sound play
-                $.playSound("http://www.noiseaddicts.com/samples_1w72b820/3721")
+                $.playSound("@Url.Content("~/Content/162464__kastenfrosch__message.mp3")");
             };
             $.connection.hub.start();
         });
-    });
-</script>
+    </script>
+    @Scripts.Render("~/bundles/pages/home")
+}
