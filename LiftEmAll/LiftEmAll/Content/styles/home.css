@@ -1,10 +1,13 @@
 ﻿#map {
-    height: 100%;
+    height: 95%;
 }
 /* Optional: Makes the sample page fill the window. */
 html, body {
     height: 100%;
     margin: 0;
+}
+
+body {
     padding-top: 10px;
 }
 
@@ -25,11 +28,11 @@ html, body {
     padding: 5px 11px 0px 11px;
 }
 
-#type-selector label {
-    font-family: Roboto;
-    font-size: 13px;
-    font-weight: 300;
-}
+    #type-selector label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+    }
 
 #target {
     width: 345px;
@@ -48,52 +51,53 @@ html, body {
     -moz-transition: right 0.4s ease-in-out;
     -webkit-transition: right 0.4s ease-in-out;
     z-index: 10000;
+    /*top: 95px;*/
 }
 
-#panel.open {
-    right: 0;    
-}
+    #panel.open {
+        right: 0;
+    }
 
-#panel .form-content {
-    overflow-y: auto;
-    height: 100%;
-}
+    #panel .form-content {
+        overflow-y: auto;
+        height: 100%;
+    }
 
-#panel h2, #panel p {
-    padding: 25px;
-}
+    #panel h2, #panel p {
+        padding: 25px;
+    }
 
-#panel .tab-content {
-    display: none;
-    padding-bottom: 100px;
-}
+    #panel .tab-content {
+        display: none;
+        padding-bottom: 100px;
+    }
 
-#panel .tab-content .request-item {
-    border-bottom: 1px solid #dddddd;
-}
+        #panel .tab-content .request-item {
+            border-bottom: 1px solid #dddddd;
+        }
 
-#panel .tab-content h3 {
-    padding: 15px;
-}
+        #panel .tab-content h3 {
+            padding: 15px;
+        }
 
-#panel .tab-content.open {
-    display: block;
-}
+        #panel .tab-content.open {
+            display: block;
+        }
 
-#panel .nav li[role='presentation'] a {
-    color: #fff;
-    border-radius: 0;
-}
+    #panel .nav li[role='presentation'] a {
+        color: #fff;
+        border-radius: 0;
+    }
 
-#panel .nav li[role='presentation'] a:hover {
-    background-color: #888;
-}
+        #panel .nav li[role='presentation'] a:hover {
+            background-color: #888;
+        }
 
-#panel .nav li[role='presentation'].active a {
-    color: #444;
-    background-color: white;
-    font-weight: bold;
-}
+    #panel .nav li[role='presentation'].active a {
+        color: #444;
+        background-color: white;
+        font-weight: bold;
+    }
 
 #panelCaller {
     position: absolute;
@@ -104,21 +108,21 @@ html, body {
     /*border-radius: 50px 0 0 50px;*/
 }
 
-#panelCaller i.fa-angle-double-left {
-    display: block;
-}
+    #panelCaller i.fa-angle-double-left {
+        display: block;
+    }
 
-#panelCaller.open i.fa-angle-double-left {
-    display: none;
-}
+    #panelCaller.open i.fa-angle-double-left {
+        display: none;
+    }
 
-#panelCaller i.fa-angle-double-right {
-    display: none;
-}
+    #panelCaller i.fa-angle-double-right {
+        display: none;
+    }
 
-#panelCaller.open i.fa-angle-double-right {
-    display: block;
-}
+    #panelCaller.open i.fa-angle-double-right {
+        display: block;
+    }
 
 #panel:hover {
     cursor: pointer;
@@ -128,14 +132,14 @@ html, body {
     padding: 15px 10px;
 }
 
-.request-item .item-row {
-    padding: 5px;
-}
+    .request-item .item-row {
+        padding: 5px;
+    }
 
-.request-item .item-row .field-label {
-    padding-left: -5px;
-}
+        .request-item .item-row .field-label {
+            padding-left: -5px;
+        }
 
-.request-item .field-label {
-    font-size: 100%;
-}
+    .request-item .field-label {
+        font-size: 100%;
+    }

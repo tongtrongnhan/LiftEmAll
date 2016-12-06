@@ -13,20 +13,11 @@
     </div>
     <div class="media-body h-search toggled">
         <form class="p-relative">
-            <input type="text" class="hs-input" placeholder="Search Google Maps">
+            <input type="text" class="hs-input pac-input" placeholder="Search Google Maps">
             <i class="zmdi zmdi-search hs-reset" data-ma-action="search-clear"></i>
         </form>
     </div>
-    <ul class="h-menu hidden">
-        <li class="dropdown">
-            <div class="p-relative">
-                <input type="text" class="hs-input pac-input" placeholder="Search Google Maps" />
-                <i class="zmdi zmdi-search hs-reset" data-ma-action="search-clear"></i>
-            </div>
-        </li>
-    </ul>
 </header>
-
 
 <form action="@Url.Action("SendRequest")" method="POST" novalidate="novalidate" id="newRequestForm">
     <div id="panel">

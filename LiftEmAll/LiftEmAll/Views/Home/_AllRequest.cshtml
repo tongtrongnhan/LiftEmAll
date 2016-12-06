@@ -43,12 +43,12 @@
             </div>
             <div class="content">
                 <i class="fa fa-clock-o" aria-hidden="true"></i>
-                <span>17:30</span>
+                <span>@request.CreatedDate.Value.ToString("dd-MM-yyyy HH:mm")</span>
             </div>
         </div>
         <div class="item-row">
-            <button type="button" class="btn btn-primary accept-request" onclick="window.home.acceptRequest()" data-url="@Url.Action("Index","Phone", new {requestId = request.Id})">Accept</button>
-            <button type="button" class="btn btn-success">Call</button>
+            <button type="button" class="btn btn-lg btn-primary accept-request" onclick="window.home.acceptRequest()" data-url="@Url.Action("Index","Phone", new {requestId = request.Id})"><i class="zmdi zmdi-check"></i> Accept</button>
+            <button type="button" class="btn btn-lg btn-success"><i class="zmdi zmdi-phone"></i> Call</button>
         </div>
     </div>
 }

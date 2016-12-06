@@ -22,8 +22,8 @@ namespace LiftEmAll
                       "~/Scripts/bootstrao-growl.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/pages/home").Include(
-                      "~/Scripts/App/App.js",
-                      "~/Scripts/pages/home.js"));
+                      "~/Scripts/pages/home.js",
+                      "~/Scripts/App/App.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       //"~/Content/bootstrap.css",

@@ -10131,7 +10131,7 @@ pre {
     -ms-user-select: none;
     user-select: none;
     position: relative;
-    padding: 10px 45px;
+    padding: 5px 45px;
     z-index: 10;
     background-color: #444;
 }
